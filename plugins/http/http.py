@@ -77,6 +77,6 @@ class FuzzerClass:
 				sock = createSocketTCP(pattern,length)
 				sendCredential(sock,command + " /","HTTP/1.1")
 				sendCredential(sock,"Host:",vhost)
-				sendCredential(sock,"Content-Length:",str((len(pattern) -2)) + "\n",timeout)
+				sendCredential(sock,"Content-Length:",str((len(pattern) -2)) + "\n")
 				sendDataTCP(sock,pattern,length,1)
 		exitProgram(2)
