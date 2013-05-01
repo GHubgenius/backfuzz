@@ -48,6 +48,7 @@ def showHelp():
 	print "-pl  [PLUGIN TO USE]" + colors.RED + " [Required] " + colors.ENDC
 	print "-pf  [PATTERN-FLAVOUR TO USE (default: Cyclic)]" + colors.GREEN + " [Optional] " + colors.ENDC
 	print "-t   [TIMEOUT (Seconds) (default: 0.8)]" + colors.GREEN + " [Optional] " + colors.ENDC
+	print "-S   [SHOW PATTERN ON CRASH (default: False)]" + colors.GREEN + " [Optional] " + colors.ENDC
 	print "\nArguments (Special Plugins):\n============================\n"
 	print "-SPECIAL" + colors.RED + " [Required] " + colors.ENDC
 	print "-pl [SPECIAL PLUGIN TO USE]" + colors.RED + " [Required] " + colors.ENDC
@@ -72,8 +73,9 @@ def showHelp():
 # Read Args function
 def readArgs(arguments):
 	count = 0
-	globalvars.timeout = 0.8
+	globalvars.timeout         = 0.8
 	globalvars.pattern_flavour = "Cyclic"
+	globalvars.show_pattern    = False
 	for arg in arguments:
 		try:
 			if arg == "-h":
@@ -92,6 +94,8 @@ def readArgs(arguments):
 				globalvars.pattern_flavour = arguments[count + 1]
 			elif arg == "-t":
 				globalvars.timeout = strToFloat(arguments[count + 1], "-t")
+			elif arg == '-S':
+				globalvars.show_pattern = True
 			count += 1
 		except:
 			exitProgram(3)
