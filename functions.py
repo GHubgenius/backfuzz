@@ -1,4 +1,5 @@
 import sys,socket,select,time,errno,base64,random,globalvars
+from getpass import getpass
 
 #################################################################################################################################
 
@@ -260,7 +261,7 @@ def checkDefaultUser(username,password):
 def createUser():
 	try:
 		username = raw_input("[!] Insert username (default: anonymous)> ")
-		password = raw_input("[!] Insert password (default: anonymous@test.com)> ")
+		password = getpass("[!] Insert password (default: anonymous@test.com)> ")
 	except KeyboardInterrupt:
 		exitProgram(6)
 	return checkDefaultUser(username,password)
